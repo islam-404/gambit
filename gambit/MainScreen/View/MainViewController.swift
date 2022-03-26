@@ -19,6 +19,11 @@ class MainViewController: UIViewController {
         tableView.register(UINib(nibName: "FoodTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
 }
 //MARK: - Работа с таблицей
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
