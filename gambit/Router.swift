@@ -15,7 +15,7 @@ protocol RouterMain {
 
 protocol RouterProtocol: RouterMain {
     func initialViewController()
-//    func showDetail(food: Food?)
+    func showDetail(food: Food?)
 }
 
 class Router: RouterProtocol {
@@ -34,11 +34,10 @@ class Router: RouterProtocol {
         }
     }
     
-//    func showDetail(food: Food?) {
-//        if let navigationController = navigationController {
-//            guard let detailViewController = assemblyBuilder?.createDetailScrene(food: food, router: self) else { return }
-//            navigationController.pushViewController(detailViewController, animated: true)
-//        }
-//    }
-    
+    func showDetail(food: Food?) {
+        if let navigationController = navigationController {
+            guard let detailViewController = assemblyBuilder?.createDetailScrene(food: food, router: self ) else { return }
+            navigationController.pushViewController(detailViewController, animated: true)
+        }
+    }
 }

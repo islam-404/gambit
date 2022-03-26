@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		84C37E684AF50B35006F6A37 /* Pods_gambit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AC2DA8438A2BCA1DA2DC74 /* Pods_gambit.framework */; };
+		A609E3B227E97F1E00CEA016 /* DetaiFoodPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A609E3B127E97F1E00CEA016 /* DetaiFoodPresenter.swift */; };
 		A65D7B7C27DC3B8800C7568E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65D7B7B27DC3B8800C7568E /* AppDelegate.swift */; };
 		A65D7B7E27DC3B8800C7568E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65D7B7D27DC3B8800C7568E /* SceneDelegate.swift */; };
 		A65D7B8327DC3B8800C7568E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A65D7B8127DC3B8800C7568E /* Main.storyboard */; };
@@ -23,10 +24,13 @@
 		A6E5213327DC801300558C1A /* MainPrezenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E5213227DC801300558C1A /* MainPrezenter.swift */; };
 		A6E5213727DCAFFF00558C1A /* FoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E5213527DCAFFF00558C1A /* FoodTableViewCell.swift */; };
 		A6E5213827DCAFFF00558C1A /* FoodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6E5213627DCAFFF00558C1A /* FoodTableViewCell.xib */; };
+		A6EA042A27E98E5800F4EBCD /* DetailFoodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EA042827E98E5800F4EBCD /* DetailFoodVC.swift */; };
+		A6EA042B27E98E5800F4EBCD /* DetailFoodVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6EA042927E98E5800F4EBCD /* DetailFoodVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		538868258E2AF0133FB9277D /* Pods-gambit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gambit.release.xcconfig"; path = "Target Support Files/Pods-gambit/Pods-gambit.release.xcconfig"; sourceTree = "<group>"; };
+		A609E3B127E97F1E00CEA016 /* DetaiFoodPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetaiFoodPresenter.swift; sourceTree = "<group>"; };
 		A65D7B7827DC3B8800C7568E /* gambit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gambit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A65D7B7B27DC3B8800C7568E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A65D7B7D27DC3B8800C7568E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -44,6 +48,8 @@
 		A6E5213227DC801300558C1A /* MainPrezenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPrezenter.swift; sourceTree = "<group>"; };
 		A6E5213527DCAFFF00558C1A /* FoodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTableViewCell.swift; sourceTree = "<group>"; };
 		A6E5213627DCAFFF00558C1A /* FoodTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodTableViewCell.xib; sourceTree = "<group>"; };
+		A6EA042827E98E5800F4EBCD /* DetailFoodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFoodVC.swift; sourceTree = "<group>"; };
+		A6EA042927E98E5800F4EBCD /* DetailFoodVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailFoodVC.xib; sourceTree = "<group>"; };
 		D3AC2DA8438A2BCA1DA2DC74 /* Pods_gambit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gambit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5EDA84917FBDCBC5440A5D1 /* Pods-gambit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gambit.debug.xcconfig"; path = "Target Support Files/Pods-gambit/Pods-gambit.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,6 +73,40 @@
 				538868258E2AF0133FB9277D /* Pods-gambit.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		A609E3A927E8FDB300CEA016 /* DetaiFoodV */ = {
+			isa = PBXGroup;
+			children = (
+				A609E3AC27E8FDE900CEA016 /* Model */,
+				A609E3AB27E8FDDE00CEA016 /* View */,
+				A609E3AA27E8FDC900CEA016 /* Presenter */,
+			);
+			path = DetaiFoodV;
+			sourceTree = "<group>";
+		};
+		A609E3AA27E8FDC900CEA016 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				A609E3B127E97F1E00CEA016 /* DetaiFoodPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		A609E3AB27E8FDDE00CEA016 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A6EA042827E98E5800F4EBCD /* DetailFoodVC.swift */,
+				A6EA042927E98E5800F4EBCD /* DetailFoodVC.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A609E3AC27E8FDE900CEA016 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		A65D7B6F27DC3B8800C7568E = {
@@ -96,6 +136,7 @@
 				A6E5212E27DC79F300558C1A /* Router.swift */,
 				A6E5213027DC7AD100558C1A /* ModulBilder.swift */,
 				A65D7B9127DC3BEA00C7568E /* MainScreen */,
+				A609E3A927E8FDB300CEA016 /* DetaiFoodV */,
 				A65D7B8127DC3B8800C7568E /* Main.storyboard */,
 				A65D7B8427DC3B8900C7568E /* Assets.xcassets */,
 				A65D7B8627DC3B8900C7568E /* LaunchScreen.storyboard */,
@@ -239,6 +280,7 @@
 				A6E5213827DCAFFF00558C1A /* FoodTableViewCell.xib in Resources */,
 				A65D7B8327DC3B8800C7568E /* Main.storyboard in Resources */,
 				A65D7B9927DC3C9E00C7568E /* MainViewController.xib in Resources */,
+				A6EA042B27E98E5800F4EBCD /* DetailFoodVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,8 +335,10 @@
 			files = (
 				A65D7B9827DC3C9E00C7568E /* MainViewController.swift in Sources */,
 				A65D7B9B27DC401200C7568E /* Food.swift in Sources */,
+				A609E3B227E97F1E00CEA016 /* DetaiFoodPresenter.swift in Sources */,
 				A6E5213327DC801300558C1A /* MainPrezenter.swift in Sources */,
 				A65D7B7C27DC3B8800C7568E /* AppDelegate.swift in Sources */,
+				A6EA042A27E98E5800F4EBCD /* DetailFoodVC.swift in Sources */,
 				A6BFED5127DC71CF00406155 /* NetworkService.swift in Sources */,
 				A6E5212F27DC79F300558C1A /* Router.swift in Sources */,
 				A65D7B7E27DC3B8800C7568E /* SceneDelegate.swift in Sources */,

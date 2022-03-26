@@ -14,13 +14,15 @@ protocol MainProtocol: AnyObject {
 
 //MARK: - Протоколы для MainViewController
 protocol MainViewPresenterProtocol: AnyObject {
-    init(view: MainProtocol, router: RouterProtocol, base: SaveCardProtocol)
-    func getFoods()
+    init(view: AnyObject, router: RouterProtocol, base: SaveCardProtocol)
+    var foods: [Food]? { get set }
     func plusMinus(plusMinus: Bool, count: Int, id: String) -> Int
     func receiveData(id: String)  -> Dictionary<String, Int>
     func setFavouriteHidden(idFood: Int)
     func getFavouriteHidden(idFood: Int) -> Bool
-    var foods: [Food]? { get set }
+    func getFoods()
+    func tapOnTheFood(food: Food?)
+    func setImgBtn(idFood: Int) -> String
 }
 
 //MARK: - Протоколы для сохранения и получения из юзерДефаулт в презентере
@@ -38,8 +40,8 @@ class MainPresenter: MainViewPresenterProtocol {
     var foods: [Food]?
     var router: RouterProtocol?
     
-    required init(view: MainProtocol, router: RouterProtocol, base: SaveCardProtocol) {
-        self.view = view
+    required init(view: AnyObject, router: RouterProtocol, base: SaveCardProtocol) {
+        self.view = view as? MainProtocol
         self.router = router
         self.base = base
 
@@ -99,13 +101,26 @@ class MainPresenter: MainViewPresenterProtocol {
     //MARK: - Получение остояния кнопки "избранное"
     func getFavouriteHidden(idFood: Int) -> Bool {
         let itemFood = receiveData(id: String(idFood))
-        print(itemFood)
         let itemFoodFavouriteCondition = itemFood["isFavourite"] ?? 0
         if itemFoodFavouriteCondition == 1 {
             return true
-        }
+        } else {
             return false
+        }
+        return false
     }
     
+    //MARK: - Передача отного элемента в друго VC
+    func tapOnTheFood(food: Food?) {
+        router?.showDetail(food: food)
+    }
+    
+    func setImgBtn(idFood: Int) -> String {
+        if getFavouriteHidden(idFood: idFood ) {
+            return "heart.fill"
+        } else {
+            return "heart"
+        }
+    }
     
 }

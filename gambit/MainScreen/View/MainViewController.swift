@@ -17,15 +17,14 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         title = "GAMBIT"
         tableView.register(UINib(nibName: "FoodTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
-        
     }
     
 }
-
+//MARK: - Работа с таблицей
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.foods?.count ?? 1
+        return presenter.foods?.count ?? 0
     }
     
     
@@ -33,7 +32,8 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? FoodTableViewCell else { return UITableViewCell() }
         let food = presenter.foods?[indexPath.row] ?? Food(id: nil, name: "failure", image: "", price: nil, description: "", nutritionFacts: nil)
         cell.setupCell(food, delegate: self)
-        
+        cell.layer.masksToBounds = false
+        cell.layer.cornerRadius = 8
         return cell
     }
     
@@ -44,9 +44,9 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
             let food = self.presenter.foods?[indexPath.row]
             let idFood = food?.id ?? 0
             self.presenter.setFavouriteHidden(idFood: idFood)
-//            action.image?.withTintColor(.blue, renderingMode: .alwaysTemplate)
             succes(true)
         }
+        
         
         let food = self.presenter.foods?[indexPath.row]
         let condition = food?.id ?? 0
@@ -56,14 +56,18 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         } else {
             logo = UIImage(systemName: "heart")
         }
-//        CGColorGetAlpha(
         swipeFavourite.image = logo
-//        swipeFavourite
         swipeFavourite.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.04)
+//        swipeFavourite.image.
         let conf = UISwipeActionsConfiguration(actions: [swipeFavourite])
-//        print(conf.actions[0].image)
+//        conf.
         conf.performsFirstActionWithFullSwipe = false
         return conf
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let food = presenter.foods?[indexPath.row]
+        presenter.tapOnTheFood(food: food)
     }
 }
 

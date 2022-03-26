@@ -9,7 +9,7 @@ import UIKit
 
 protocol AsselderBilderProtocol {
     func createMainScrene(router: RouterProtocol) -> UIViewController
-//    func createDetailScrene(food: Food?, router: RouterProtocol) -> UIViewController
+    func createDetailScrene(food: Food?, router: RouterProtocol) -> UIViewController
 }
 
 class AssedlerScreneBilder: AsselderBilderProtocol {
@@ -22,9 +22,15 @@ class AssedlerScreneBilder: AsselderBilderProtocol {
         return view
     }
     
-//    func createDetailScrene(food: Food?, router: RouterProtocol) -> UIViewController {
-//        return UIViewController()
-//    }
-    
+    func createDetailScrene(food: Food?, router: RouterProtocol) -> UIViewController {
+        let view = DetailFoodVC()
+//        let view = MainViewController()
+        let food = food
+        let base = Base()
+        let presenter = MainPresenter(view: view, router: router, base: base)
+        view.presenter = presenter
+        view.food = food
+        return view
+    }
     
 }
