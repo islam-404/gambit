@@ -9,14 +9,14 @@ import UIKit
 
 protocol AsselderBilderProtocol {
     func createMainScrene(router: RouterProtocol) -> UIViewController
-//    func createFavouriteScrene(router: RouterProtocol) -> UIViewController
+    func createFavouriteScrene(router: RouterProtocol) -> UIViewController
     func createDetailScrene(food: Food?, router: RouterProtocol) -> UIViewController
 }
 
 class AssedlerScreneBilder: AsselderBilderProtocol {
     func createMainScrene(router: RouterProtocol) -> UIViewController {
-        let view = MainViewController()
-//        let view = FavouriteViewController()
+//        let view = MainViewController()
+        let view = FavouriteViewController()
         let base = Base()
         let presenter = MainPresenter(view: view, router: router, base: base)
         view.presenter = presenter
@@ -34,12 +34,12 @@ class AssedlerScreneBilder: AsselderBilderProtocol {
         return view
     }
     
-//    func createFavouriteScrene(router: RouterProtocol) -> UIViewController {
-//        let view = FavouriteViewController()
-//        let base = Base()
-//        let presenter = MainPresenter(view: view, router: router, base: base)
-//        view.presenter = presenter
-//        return view
-//    }
+    func createFavouriteScrene(router: RouterProtocol) -> UIViewController {
+        let view = FavouriteViewController()
+        let base = Base()
+        let presenter = MainPresenter(view: view, router: router, base: base)
+        view.presenter = presenter
+        return view
+    }
     
 }
