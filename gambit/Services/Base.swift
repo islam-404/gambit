@@ -34,8 +34,15 @@ class Base: SaveCardProtocol {
             response.append(id)
             defaults.set(response, forKey: "listIsFavourite")
         } else {
-            response = response.filter { $0 / id != 1 }
-            defaults.set(response, forKey: "listIsFavourite")
+            print(" qwe \(response)  id \(id)")
+            var respons = [Int]()
+            response.forEach({
+                    if ($0 / id) != 1 {
+                        respons.append($0)
+                    }
+                })
+            print(" itog \(respons)")
+            defaults.set(respons, forKey: "listIsFavourite")
         }
     }
     

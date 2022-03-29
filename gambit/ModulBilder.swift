@@ -15,8 +15,8 @@ protocol AsselderBilderProtocol {
 
 class AssedlerScreneBilder: AsselderBilderProtocol {
     func createMainScrene(router: RouterProtocol) -> UIViewController {
-//        let view = MainViewController()
-        let view = FavouriteViewController()
+        let view = MainViewController()
+//        let view = FavouriteViewController()
         let base = Base()
         let presenter = MainPresenter(view: view, router: router, base: base)
         view.presenter = presenter
