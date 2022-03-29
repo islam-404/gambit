@@ -31,7 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let router = Router(navigationController: navigationControoller, assemblyBuilder: assemblyBilder)
         router.favouriteViewController()
         router.initialViewController()
-        navigationControoller.tabBarItem.image = UIImage(systemName: "1.circle")
+        navigationControoller.tabBarItem.image = UIImage(systemName: "fork.knife")
         favouriteViewController.tabBarItem.image = UIImage(systemName: "heart.fill")
         tabBarVC.setViewControllers([navigationControoller, favouriteViewController], animated: true)
         

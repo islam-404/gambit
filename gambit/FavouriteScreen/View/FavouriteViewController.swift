@@ -7,14 +7,7 @@
 
 import UIKit
 
-class FavouriteViewController: UIViewController, MainTableDelegate {
-    func countFood(plusMinus: Bool, count: Int, id: String) -> Int {
-        return 1
-    }
-    
-    func receiveDataFood(id: String) -> Dictionary<String, Int>? {
-        return ["csc": 1]
-    }
+class FavouriteViewController: UIViewController {
     
 
     @IBOutlet weak var modalWindow: UIView!
@@ -82,7 +75,16 @@ extension FavouriteViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-extension FavouriteViewController: MainProtocol {
+extension FavouriteViewController: MainProtocol, MainTableDelegate {
+ 
+    func countFood(plusMinus: Bool, count: Int, id: String) -> Int {
+        return 1
+    }
+    
+    func receiveDataFood(id: String) -> Dictionary<String, Int>? {
+        return ["csc": 1]
+    }
+    
     func succes() {
         tableView.reloadData()
         activityIndicator.stopAnimating()
