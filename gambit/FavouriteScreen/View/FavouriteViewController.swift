@@ -44,6 +44,8 @@ extension FavouriteViewController: UITableViewDataSource, UITableViewDelegate {
         let response: Array<Int>? = presenter.receiveListFavourite()
         if response?.count == 0 {
             modalWindow.isHidden = false
+        } else {
+            modalWindow.isHidden = true
         }
         return response?.count ?? 0
     }
