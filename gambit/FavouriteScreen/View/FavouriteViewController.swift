@@ -17,6 +17,7 @@ class FavouriteViewController: UIViewController, MainTableDelegate {
     }
     
 
+    @IBOutlet weak var modalWindow: UIView!
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -41,6 +42,9 @@ extension FavouriteViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let response: Array<Int>? = presenter.receiveListFavourite()
+        if response?.count == 0 {
+            modalWindow.isHidden = false
+        }
         return response?.count ?? 0
     }
     
