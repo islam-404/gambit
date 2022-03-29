@@ -15,6 +15,7 @@ protocol RouterMain {
 
 protocol RouterProtocol: RouterMain {
     func initialViewController()
+//    func favouriteViewController()
     func showDetail(food: Food?)
 }
 
@@ -33,6 +34,13 @@ class Router: RouterProtocol {
             navigationController.viewControllers = [mainViewController]
         }
     }
+    
+//    func favouriteViewController() {
+//        if let navigationController = navigationController {
+//            guard let mainViewController = assemblyBuilder?.createFavouriteScrene(router: self) else { return }
+//            navigationController.viewControllers = [mainViewController]
+//        }
+//    }
     
     func showDetail(food: Food?) {
         if let navigationController = navigationController {

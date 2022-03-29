@@ -63,9 +63,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         }
         swipeFavourite.image = logo
         swipeFavourite.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.04)
-//        swipeFavourite.image.
         let conf = UISwipeActionsConfiguration(actions: [swipeFavourite])
-//        conf.
         conf.performsFirstActionWithFullSwipe = false
         return conf
     }

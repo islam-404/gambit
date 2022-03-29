@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		84C37E684AF50B35006F6A37 /* Pods_gambit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AC2DA8438A2BCA1DA2DC74 /* Pods_gambit.framework */; };
 		A609E3B227E97F1E00CEA016 /* DetaiFoodPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A609E3B127E97F1E00CEA016 /* DetaiFoodPresenter.swift */; };
+		A6155F3527F05879002B882E /* FavouriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6155F3327F05879002B882E /* FavouriteViewController.swift */; };
+		A6155F3627F05879002B882E /* FavouriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6155F3427F05879002B882E /* FavouriteViewController.xib */; };
 		A65D7B7C27DC3B8800C7568E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65D7B7B27DC3B8800C7568E /* AppDelegate.swift */; };
 		A65D7B7E27DC3B8800C7568E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65D7B7D27DC3B8800C7568E /* SceneDelegate.swift */; };
 		A65D7B8327DC3B8800C7568E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A65D7B8127DC3B8800C7568E /* Main.storyboard */; };
@@ -31,6 +33,8 @@
 /* Begin PBXFileReference section */
 		538868258E2AF0133FB9277D /* Pods-gambit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gambit.release.xcconfig"; path = "Target Support Files/Pods-gambit/Pods-gambit.release.xcconfig"; sourceTree = "<group>"; };
 		A609E3B127E97F1E00CEA016 /* DetaiFoodPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetaiFoodPresenter.swift; sourceTree = "<group>"; };
+		A6155F3327F05879002B882E /* FavouriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteViewController.swift; sourceTree = "<group>"; };
+		A6155F3427F05879002B882E /* FavouriteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavouriteViewController.xib; sourceTree = "<group>"; };
 		A65D7B7827DC3B8800C7568E /* gambit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gambit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A65D7B7B27DC3B8800C7568E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A65D7B7D27DC3B8800C7568E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +113,23 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		A6155F2F27F057A6002B882E /* FavouriteScreen */ = {
+			isa = PBXGroup;
+			children = (
+				A6155F3127F0582A002B882E /* View */,
+			);
+			path = FavouriteScreen;
+			sourceTree = "<group>";
+		};
+		A6155F3127F0582A002B882E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A6155F3327F05879002B882E /* FavouriteViewController.swift */,
+				A6155F3427F05879002B882E /* FavouriteViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		A65D7B6F27DC3B8800C7568E = {
 			isa = PBXGroup;
 			children = (
@@ -136,7 +157,7 @@
 				A6E5212E27DC79F300558C1A /* Router.swift */,
 				A6E5213027DC7AD100558C1A /* ModulBilder.swift */,
 				A65D7B9127DC3BEA00C7568E /* MainScreen */,
-				A609E3A927E8FDB300CEA016 /* DetaiFoodV */,
+				A6155F2F27F057A6002B882E /* FavouriteScreen */,
 				A65D7B8127DC3B8800C7568E /* Main.storyboard */,
 				A65D7B8427DC3B8900C7568E /* Assets.xcassets */,
 				A65D7B8627DC3B8900C7568E /* LaunchScreen.storyboard */,
@@ -151,6 +172,7 @@
 				A65D7B9527DC3C6D00C7568E /* Model */,
 				A65D7B9427DC3C6100C7568E /* View */,
 				A65D7B9227DC3C4200C7568E /* Presenter */,
+				A609E3A927E8FDB300CEA016 /* DetaiFoodV */,
 			);
 			path = MainScreen;
 			sourceTree = "<group>";
@@ -278,6 +300,7 @@
 				A65D7B8827DC3B8900C7568E /* LaunchScreen.storyboard in Resources */,
 				A65D7B8527DC3B8900C7568E /* Assets.xcassets in Resources */,
 				A6E5213827DCAFFF00558C1A /* FoodTableViewCell.xib in Resources */,
+				A6155F3627F05879002B882E /* FavouriteViewController.xib in Resources */,
 				A65D7B8327DC3B8800C7568E /* Main.storyboard in Resources */,
 				A65D7B9927DC3C9E00C7568E /* MainViewController.xib in Resources */,
 				A6EA042B27E98E5800F4EBCD /* DetailFoodVC.xib in Resources */,
@@ -341,6 +364,7 @@
 				A6EA042A27E98E5800F4EBCD /* DetailFoodVC.swift in Sources */,
 				A6BFED5127DC71CF00406155 /* NetworkService.swift in Sources */,
 				A6E5212F27DC79F300558C1A /* Router.swift in Sources */,
+				A6155F3527F05879002B882E /* FavouriteViewController.swift in Sources */,
 				A65D7B7E27DC3B8800C7568E /* SceneDelegate.swift in Sources */,
 				A6E5213127DC7AD100558C1A /* ModulBilder.swift in Sources */,
 				A6BCBB6027E1249D007E32DB /* Base.swift in Sources */,

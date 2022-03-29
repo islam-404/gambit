@@ -18,6 +18,7 @@ protocol MainViewPresenterProtocol: AnyObject {
     var foods: [Food]? { get set }
     func plusMinus(plusMinus: Bool, count: Int, id: String) -> Int
     func receiveData(id: String)  -> Dictionary<String, Int>
+    func receiveListFavourite() -> Array<Int>
     func setFavouriteHidden(idFood: Int)
     func getFavouriteHidden(idFood: Int) -> Bool
     func getFoods()
@@ -30,10 +31,12 @@ protocol SaveCardProtocol: AnyObject {
     func saveCount(id: String, countDish: Int)
     func saveFavourite(id: Int, favouriteCondition: Int)
     func requestData(id: String) -> Dictionary<String, Int>
+    func requestListIsFavorite() -> Array<Int>
 }
 
 
 class MainPresenter: MainViewPresenterProtocol {
+    
     
     var base: SaveCardProtocol?
     weak var view: MainProtocol?
@@ -110,7 +113,7 @@ class MainPresenter: MainViewPresenterProtocol {
         return false
     }
     
-    //MARK: - Передача отного элемента в друго VC
+    //MARK: - Передача отного элемента в друго VC и переход
     func tapOnTheFood(food: Food?) {
         router?.showDetail(food: food)
     }
@@ -121,6 +124,13 @@ class MainPresenter: MainViewPresenterProtocol {
         } else {
             return "heart"
         }
+    }
+    
+    
+    
+    //MARK: Получение с юзерДефаулт списка избранных
+    func receiveListFavourite() -> Array<Int> {
+        return base?.requestListIsFavorite() ?? []
     }
     
 }

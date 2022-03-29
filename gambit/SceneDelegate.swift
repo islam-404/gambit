@@ -20,13 +20,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
+        
+//        let mainViewController = MainViewController()
+        let favouriteViewController = FavouriteViewController()
+        
+        let tabBarVC = UITabBarController()
          
         let navigationControoller = UINavigationController()
         let assemblyBilder = AssedlerScreneBilder()
         let router = Router(navigationController: navigationControoller, assemblyBuilder: assemblyBilder)
+//        router.favouriteViewController()
         router.initialViewController()
+        tabBarVC.setViewControllers([navigationControoller, favouriteViewController], animated: true)
         
-        window?.rootViewController = navigationControoller
+        window?.rootViewController = tabBarVC
         window?.makeKeyAndVisible()
     }
 

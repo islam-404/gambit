@@ -13,28 +13,43 @@ class Base: SaveCardProtocol {
     //MARK: - Запись количества блюд
     func saveCount(id: String, countDish: Int) {
         let chekToFood = requestData(id: id)
-        //MARK: Получаем состояние кнопки
         let foodIsFavourite = chekToFood["isFavourite"] ?? 0
-        //MARK: Сохраняем новое количество
         let item = ["count": countDish, "isFavourite": foodIsFavourite]
         defaults.set(item, forKey: id)
     }
     
     //MARK: - Запись состояния кнопки избранное
     func saveFavourite(id: Int, favouriteCondition: Int) {
+        saveListIsFavorite(id: id, favouriteCondition: favouriteCondition)
         let id = String(id)
         let chekToFood = requestData(id: id)
-        //MARK: Получаем количество блюд
         let countDish = chekToFood["count"] ?? 0
-        //MARK: Сохраняем новое состояние кнопки избранное
         let item = ["count": countDish, "isFavourite": favouriteCondition]
         defaults.set(item, forKey: id)
     }
+    //MARK: - Сохранение списка избранных
+    func saveListIsFavorite(id: Int, favouriteCondition: Int){
+        var response = requestListIsFavorite()
+        if favouriteCondition == 1 {
+            response.append(id)
+            defaults.set(response, forKey: "listIsFavourite")
+        } else {
+            response = response.filter { $0 / id != 1 }
+            defaults.set(response, forKey: "listIsFavourite")
+        }
+    }
     
-    //MARK: Получение с юзерДефаулт
+    //MARK: Получение с юзерДефаулт количества и состояние кнопки лайка
     func requestData(id: String) -> Dictionary<String, Int> {
         let response = defaults.object(forKey: id) as? Dictionary<String, Int> ?? ["count": 0, "isFavourite": 0]
         return response
+    }
+    
+    //MARK: Получение с юзерДефаулт списка избранных
+    func requestListIsFavorite() -> Array<Int> {
+        let response = defaults.array(forKey: "listIsFavourite")
+        print("список \(response as? Array<Int> ?? [])")
+        return response as? Array<Int> ?? [Int]()
     }
 }
 
