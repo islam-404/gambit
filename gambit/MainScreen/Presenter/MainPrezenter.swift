@@ -16,13 +16,14 @@ protocol MainProtocol: AnyObject {
 protocol MainViewPresenterProtocol: AnyObject {
     init(view: AnyObject, router: RouterProtocol, base: SaveCardProtocol)
     var foods: [Food]? { get set }
+    func viewDidLoad()
     func plusMinus(plusMinus: Bool, count: Int, id: String) -> Int
     func receiveData(id: String)  -> Dictionary<String, Int>
     func receiveListFavourite() -> Array<Int>
     func setFavouriteHidden(idFood: Int)
     func getFavouriteHidden(idFood: Int) -> Bool
     func getFoods()
-    func tapOnTheFood(food: Food?)
+    func tapOnTheFood(food: Food?, indexVC: Int)
     func setImgBtn(idFood: Int) -> String
 }
 
@@ -48,8 +49,11 @@ class MainPresenter: MainViewPresenterProtocol {
         self.router = router
         self.base = base
 
-        router.navigationController?.navigationBar.prefersLargeTitles = true
-        router.navigationController?.navigationItem.largeTitleDisplayMode = .always
+//        router.navigationController[0].navigationBar.prefersLargeTitles = true
+//        router.navigationController[0].navigationItem.largeTitleDisplayMode = .always
+    }
+    
+    func viewDidLoad() {
         getFoods()
     }
     
@@ -114,8 +118,8 @@ class MainPresenter: MainViewPresenterProtocol {
     }
     
     //MARK: - Передача отного элемента в друго VC и переход
-    func tapOnTheFood(food: Food?) {
-        router?.showDetail(food: food)
+    func tapOnTheFood(food: Food?, indexVC: Int) {
+        router?.showDetail(food: food, indexVC: indexVC)
     }
     
     func setImgBtn(idFood: Int) -> String {

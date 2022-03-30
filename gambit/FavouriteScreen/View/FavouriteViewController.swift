@@ -15,12 +15,14 @@ class FavouriteViewController: UIViewController {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var presenter: MainViewPresenterProtocol!
+    let selfIndex = 1
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "FoodTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         self.title = "Избранное"
+        presenter.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,20 +73,14 @@ extension FavouriteViewController: UITableViewDataSource, UITableViewDelegate {
                 food = $0
             }
         })
-        presenter.tapOnTheFood(food: food)
+        presenter.tapOnTheFood(food: food, indexVC: selfIndex)
     }
 }
 
-extension FavouriteViewController: MainProtocol, MainTableDelegate {
- 
-    func countFood(plusMinus: Bool, count: Int, id: String) -> Int {
-        return 1
-    }
-    
-    func receiveDataFood(id: String) -> Dictionary<String, Int>? {
-        return ["csc": 1]
-    }
-    
+
+
+//MARK: - Реализация протоколов ответ от сервера
+extension FavouriteViewController: MainProtocol {
     func succes() {
         tableView.reloadData()
         activityIndicator.stopAnimating()
@@ -98,4 +94,17 @@ extension FavouriteViewController: MainProtocol, MainTableDelegate {
     }
     
     
+}
+
+//MARK: - Реализация протоколов получение колличества и его изменения
+extension FavouriteViewController: MainTableDelegate {
+    func receiveDataFood(id: String) -> Dictionary<String, Int>? {
+        let data = presenter.receiveData(id: id)
+        return data
+    }
+    
+    func countFood(plusMinus: Bool, count: Int, id: String) -> Int {
+        let count = presenter.plusMinus(plusMinus: plusMinus, count: count, id: id)
+        return count
+    }
 }

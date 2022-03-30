@@ -13,10 +13,12 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var presenter: MainViewPresenterProtocol!
+    let selfIndex = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "GAMBIT"
         tableView.register(UINib(nibName: "FoodTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        presenter.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,7 +72,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let food = presenter.foods?[indexPath.row]
-        presenter.tapOnTheFood(food: food)
+        presenter.tapOnTheFood(food: food, indexVC: selfIndex)
     }
 }
 

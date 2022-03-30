@@ -9,43 +9,36 @@ import UIKit
 
 
 protocol RouterMain {
-    var navigationController: UINavigationController? { get set }
-    var assemblyBuilder: AsselderBilderProtocol? { get set }
+    var navigationController: [UINavigationController]! { get set }
+    var assemblyBuilder: AsselderBilderProtocol! { get set }
 }
 
 protocol RouterProtocol: RouterMain {
-    func initialViewController()
-    func favouriteViewController()
-    func showDetail(food: Food?)
+    func initialViewController() -> UIViewController
+    func favouriteViewController() -> UIViewController
+    func showDetail(food: Food?, indexVC: Int)
 }
 
 class Router: RouterProtocol {
-    var assemblyBuilder: AsselderBilderProtocol?
-    var navigationController: UINavigationController?
+    var assemblyBuilder: AsselderBilderProtocol!
+    var navigationController: [UINavigationController]!
     
-    init(navigationController: UINavigationController, assemblyBuilder: AsselderBilderProtocol) {
+    init(navigationController: [UINavigationController], assemblyBuilder: AsselderBilderProtocol) {
         self.navigationController = navigationController
         self.assemblyBuilder = assemblyBuilder
     }
     
-    func initialViewController() {
-        if let navigationController = navigationController {
-            guard let mainViewController = assemblyBuilder?.createMainScrene(router: self) else { return }
-            navigationController.viewControllers = [mainViewController]
-        }
+    func initialViewController() -> UIViewController {
+        let mainViewController = assemblyBuilder.createMainScrene(router: self)
+        return mainViewController
     }
     
-    func favouriteViewController() {
-        if let navigationController = navigationController {
-            guard let mainViewController = assemblyBuilder?.createFavouriteScrene(router: self) else { return }
-            navigationController.viewControllers = [mainViewController]
-        }
+    func favouriteViewController() -> UIViewController {
+        let mainViewController = assemblyBuilder.createFavouriteScrene(router: self)
+        return mainViewController
     }
     
-    func showDetail(food: Food?) {
-        if let navigationController = navigationController {
-            guard let detailViewController = assemblyBuilder?.createDetailScrene(food: food, router: self ) else { return }
-            navigationController.pushViewController(detailViewController, animated: true)
-        }
-    }
+    func showDetail(food: Food?, indexVC: Int) {
+        let detailViewController = assemblyBuilder.createDetailScrene(food: food, router: self )
+        navigationController[indexVC].pushViewController(detailViewController, animated: true)    }
 }

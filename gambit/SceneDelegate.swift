@@ -22,18 +22,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         
         //        let mainViewController = MainViewController()
-        let favouriteViewController = FavouriteViewController()
         
         let tabBarVC = UITabBarController()
         
-        let navigationControoller = UINavigationController()
+        let navigationControoller = [UINavigationController()]
         let assemblyBilder = AssedlerScreneBilder()
         let router = Router(navigationController: navigationControoller, assemblyBuilder: assemblyBilder)
-        router.favouriteViewController()
-        router.initialViewController()
-        navigationControoller.tabBarItem.image = UIImage(systemName: "fork.knife")
+        let favouriteViewController = router.favouriteViewController()
+        let initialVC = router.initialViewController()
+        
+        let mainNavVC = UINavigationController(rootViewController: initialVC)
+        let favoriteNavVC = UINavigationController(rootViewController: favouriteViewController)
+        router.navigationController = [mainNavVC, favoriteNavVC]
+        
+        initialVC.tabBarItem.image = UIImage(systemName: "fork.knife")
         favouriteViewController.tabBarItem.image = UIImage(systemName: "heart.fill")
-        tabBarVC.setViewControllers([navigationControoller, favouriteViewController], animated: true)
+        tabBarVC.setViewControllers([mainNavVC, favoriteNavVC], animated: true)
         
         window?.rootViewController = tabBarVC
         window?.makeKeyAndVisible()
@@ -69,4 +73,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     
 }
+
 

@@ -38,6 +38,7 @@ class Base: SaveCardProtocol {
             var respons = [Int]()
             response.forEach({
                     if ($0 / id) != 1 {
+                        
                         respons.append($0)
                     }
                 })
